@@ -1,0 +1,20 @@
+digraph ArbolAVL {
+node [shape=circle, style=filled, fillcolor=lightblue, fontcolor=black];
+Ramon;
+Ramon -> Pedro;
+Pedro;
+Pedro -> Juan;
+Juan;
+Pedro -> Julio;
+Julio;
+Ramon -> Aron;
+Aron;
+Aron -> Casas;
+Casas;
+Aron -> Sofi;
+Sofi;
+Sofi -> Ale;
+Ale;
+Sofi -> Marta;
+Marta;
+}
