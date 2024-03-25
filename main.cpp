@@ -1,23 +1,11 @@
 #include <iostream>
 #include "tablaHashGrupos/TablaGruposHash.h"
 #include "ArbolesAvl//ArbolAVL.h"
+#include "tablaHashCampos/TablaCampoHash.h"
+#include "generarArchivos/ArchivoDOT.h"
 #include <fstream>
 using namespace std;
 
-void generarArchivoDOT(NodoArbol* raiz, ofstream& archivoDot) {
-
-    if (raiz) {
-        archivoDot << raiz->dato << ";\n";
-        if (raiz->izq) {
-            archivoDot << raiz->dato << " -> " << raiz->izq->dato << ";\n";
-            generarArchivoDOT(raiz->izq, archivoDot);
-        }
-        if (raiz->der) {
-            archivoDot << raiz->dato << " -> " << raiz->der->dato << ";\n";
-            generarArchivoDOT(raiz->der, archivoDot);
-        }
-    }
-}
 
 int main() {
 
@@ -33,7 +21,7 @@ int main() {
     tabla.insertarGrupo(grupo4);
 
     tabla.imprimirDatosTabla();*/
-    ArbolAVL arbol;
+    /*ArbolAVL arbol;
     NodoArbol *raiz = nullptr;
 
     arbol.insertarEnArbol("Juan");
@@ -46,22 +34,45 @@ int main() {
     arbol.insertarEnArbol("Sofi");
     arbol.insertarEnArbol("Marta");
 
-    raiz = arbol.getArbol();
-    ofstream archivoDot("../graph.dot"); // Crea un archivo DOT
-    if (!archivoDot.is_open()) {
-        cerr << "Error al abrir el archivo." << endl;
-        return 1;
-    }
-    archivoDot << "digraph ArbolAVL {\n";
-    archivoDot<<"node [shape=circle, style=filled, fillcolor=lightblue, fontcolor=black]"<<";\n";
-    generarArchivoDOT(raiz, archivoDot);
+    raiz = arbol.getArbol();*/
 
-    archivoDot << "}\n";
-    //archivoDot<<code<<endl;
-    archivoDot.close();
+    TablaCampoHash campos;
+    campos.insertarGrupo("Nombre");
+    campos.insertarGrupo("Telefono");
+    campos.insertarGrupo("Apellido");
 
-    // Llamada al comando dot para generar la imagen del árbol
-    //system("dot -Tpng arbol.dot -o arbol.png");
-    system("dot -Tpng ../graph.dot -o ../graph.png");
-    cout << "Grafico generado correctamente." << endl;
+    campos.insertarDatosArbol("Nombre","Juanito");
+    campos.insertarDatosArbol("Nombre","Pedroporro");
+    campos.insertarDatosArbol("Nombre","Juliocasas");
+    campos.insertarDatosArbol("Nombre","Ramondino");
+    campos.insertarDatosArbol("Nombre","Casasblanca");
+
+    campos.insertarDatosArbol("Telefono","12378567");
+    campos.insertarDatosArbol("Telefono","45647896");
+    campos.insertarDatosArbol("Telefono","78965478");
+    campos.insertarDatosArbol("Telefono","10135486");
+    campos.insertarDatosArbol("Telefono","10236789");
+
+    campos.insertarDatosArbol("Apellido","Aron");
+    campos.insertarDatosArbol("Apellido","Astrid");
+    campos.insertarDatosArbol("Apellido","Ale");
+    campos.insertarDatosArbol("Apellido","Sofi");
+    campos.insertarDatosArbol("Apellido","Marta");
+
+    campos.imprimirDatosTabla();
+    campos.buscarGrupo("Nombre").arbol.imprimirInOrden();
+    campos.buscarGrupo("Apellido").arbol.imprimirInOrden();
+    campos.buscarGrupo("Telefono").arbol.imprimirInOrden();
+
+    NodoArbol *raiz = nullptr;
+    ArchivoDOT dot;
+
+    raiz = campos.buscarGrupo("Telefono").arbol.getArbol();
+
+
+    //dot.obtenerArchivoDOT(raiz);
+    dot.generarDOTCampos(campos);
+
+    cout<<"Fin del metodo";
+
 }

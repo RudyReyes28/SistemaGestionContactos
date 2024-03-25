@@ -11,4 +11,10 @@ add_executable(GestionDeContactos main.cpp
         ArbolesAvl/NodoArbol.cpp
         ArbolesAvl/NodoArbol.h
         ArbolesAvl/ArbolAVL.cpp
-        ArbolesAvl/ArbolAVL.h)
+        ArbolesAvl/ArbolAVL.h
+        generarArchivos/ArchivoDOT.cpp
+        generarArchivos/ArchivoDOT.h
+        tablaHashCampos/CampoHash.cpp
+        tablaHashCampos/CampoHash.h
+        tablaHashCampos/TablaCampoHash.cpp
+        tablaHashCampos/TablaCampoHash.h)

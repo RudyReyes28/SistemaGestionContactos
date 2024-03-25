@@ -25,6 +25,7 @@ public:
     void inOrden(NodoArbol * raiz);
     void postOrden(NodoArbol* raiz);
     void insertarEnArbol(string valor);
+    void imprimirInOrden();
     NodoArbol* getArbol();
 };
 #endif //GESTIONDECONTACTOS_ARBOLAVL_H

@@ -129,5 +129,10 @@ NodoArbol *ArbolAVL::getArbol() {
     return arbol;
 }
 
+void ArbolAVL::imprimirInOrden() {
+    inOrden(arbol);
+
+}
+
 
 
