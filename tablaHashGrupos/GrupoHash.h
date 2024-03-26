@@ -5,10 +5,13 @@
 #ifndef GESTIONDECONTACTOS_GRUPOHASH_H
 #define GESTIONDECONTACTOS_GRUPOHASH_H
 #include <string>
+#include "../tablaHashCampos/TablaCampoHash.h"
+
 using namespace std;
 struct GrupoHash{
     string nombreGrupo; //clave
-    string valor; //tabla hash asociada a los campos
+    //TablaCampoHash campos; //tabla hash asociada a los campos
+    string valor;
 
 };
 #endif //GESTIONDECONTACTOS_GRUPOHASH_H

@@ -20,7 +20,7 @@ public:
     ~TablaCampoHash() {
         delete[] tabla;
     }
-    void insertarGrupo(string nombreCampo);
+    void insertarGrupo(string nombreCampo, string tipoDato);
     CampoHash buscarGrupo(string nombreCampo);
     int obtenerPosicionGrupo(string nombreCampo);
     CampoHash* obtenerTabla();

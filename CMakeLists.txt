@@ -17,4 +17,6 @@ add_executable(GestionDeContactos main.cpp
         tablaHashCampos/CampoHash.cpp
         tablaHashCampos/CampoHash.h
         tablaHashCampos/TablaCampoHash.cpp
-        tablaHashCampos/TablaCampoHash.h)
+        tablaHashCampos/TablaCampoHash.h
+        lineaDeComandos/LineaComandos.cpp
+        lineaDeComandos/LineaComandos.h)

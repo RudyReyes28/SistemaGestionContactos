@@ -97,6 +97,12 @@ build CMakeFiles/GestionDeContactos.dir/tablaHashCampos/TablaCampoHash.cpp.obj: 
   OBJECT_DIR = CMakeFiles\GestionDeContactos.dir
   OBJECT_FILE_DIR = CMakeFiles\GestionDeContactos.dir\tablaHashCampos
 
+build CMakeFiles/GestionDeContactos.dir/lineaDeComandos/LineaComandos.cpp.obj: CXX_COMPILER__GestionDeContactos_unscanned_Debug C$:/Users/rudyo/CLionProjects/GestionDeContactos/lineaDeComandos/LineaComandos.cpp || cmake_object_order_depends_target_GestionDeContactos
+  DEP_FILE = CMakeFiles\GestionDeContactos.dir\lineaDeComandos\LineaComandos.cpp.obj.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\GestionDeContactos.dir
+  OBJECT_FILE_DIR = CMakeFiles\GestionDeContactos.dir\lineaDeComandos
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target GestionDeContactos
@@ -105,7 +111,7 @@ build CMakeFiles/GestionDeContactos.dir/tablaHashCampos/TablaCampoHash.cpp.obj: 
 #############################################
 # Link the executable GestionDeContactos.exe
 
-build GestionDeContactos.exe: CXX_EXECUTABLE_LINKER__GestionDeContactos_Debug CMakeFiles/GestionDeContactos.dir/main.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashGrupos/GrupoHash.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashGrupos/TablaGruposHash.cpp.obj CMakeFiles/GestionDeContactos.dir/ArbolesAvl/NodoArbol.cpp.obj CMakeFiles/GestionDeContactos.dir/ArbolesAvl/ArbolAVL.cpp.obj CMakeFiles/GestionDeContactos.dir/generarArchivos/ArchivoDOT.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashCampos/CampoHash.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashCampos/TablaCampoHash.cpp.obj
+build GestionDeContactos.exe: CXX_EXECUTABLE_LINKER__GestionDeContactos_Debug CMakeFiles/GestionDeContactos.dir/main.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashGrupos/GrupoHash.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashGrupos/TablaGruposHash.cpp.obj CMakeFiles/GestionDeContactos.dir/ArbolesAvl/NodoArbol.cpp.obj CMakeFiles/GestionDeContactos.dir/ArbolesAvl/ArbolAVL.cpp.obj CMakeFiles/GestionDeContactos.dir/generarArchivos/ArchivoDOT.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashCampos/CampoHash.cpp.obj CMakeFiles/GestionDeContactos.dir/tablaHashCampos/TablaCampoHash.cpp.obj CMakeFiles/GestionDeContactos.dir/lineaDeComandos/LineaComandos.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\GestionDeContactos.dir

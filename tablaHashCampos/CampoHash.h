@@ -10,6 +10,7 @@
 using namespace std;
 struct CampoHash{
     string nombreCampo; //clave
+    string tipoDato;
     ArbolAVL arbol; //tabla hash asociada al arbol
     int indiceCampo;
 

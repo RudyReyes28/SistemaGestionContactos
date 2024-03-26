@@ -84,11 +84,45 @@ GrupoHash *TablaGruposHash::obtenerTabla() {
 }
 
 void TablaGruposHash::imprimirDatosTabla() {
-    cout << "Datos almacenados en la tabla hash:" <<endl;
+    cout << "Datos almacenados en la tabla hash:" <<cantidadDatos<<endl;
     cout << "Datos almacenados tiene un tamanio de : "<<tamanoActual <<endl;
     for (int i = 0; i < tamanoActual; ++i) {
         if (!tabla[i].nombreGrupo.empty()) {
-            cout << "Clave: " << tabla[i].nombreGrupo << ", Valor: " << tabla[i].valor << " , indice" << funcionHash(tabla[i].nombreGrupo) <<endl;
+            cout << "Clave: " << tabla[i].nombreGrupo << " , indice" << funcionHash(tabla[i].nombreGrupo) <<endl;
         }
     }
 }
+
+void TablaGruposHash::insertarGrupoPorNombre(string nombreGrupo) {
+// Verificar si es necesario realizar rehashing
+    if ((double)cantidadDatos / tamanoActual >= factorCarga) {
+        rehash();
+    }
+
+    // Calcular el índice de hash
+    unsigned int index = funcionHash(nombreGrupo);
+
+    // Manejar colisiones y encontrar una posición vacía
+    while (!tabla[index].nombreGrupo.empty()) {
+        index = (index + 1) % tamanoActual;
+    }
+
+    // Insertar el elemento en la tabla
+    GrupoHash nuevoGrupo;
+    nuevoGrupo.nombreGrupo = nombreGrupo;
+    nuevoGrupo.valor = nombreGrupo;
+
+    tabla[index] = nuevoGrupo;
+    cantidadDatos++;
+}
+/*
+void TablaGruposHash::insertarCamposGrupo(string nombreGrupo, string campo, string tipoDato) {
+    int index = funcionHash(nombreGrupo);
+    tabla[index].campos.insertarGrupo(campo, tipoDato);
+}*/
+/*
+void TablaGruposHash::insertarDatosCampos(string nombreGrupo, string campo, string valor) {
+    int index = funcionHash(nombreGrupo);
+    tabla[index].campos.insertarDatosArbol(campo,valor);
+
+}*/

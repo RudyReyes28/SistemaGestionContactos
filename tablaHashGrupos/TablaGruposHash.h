@@ -24,6 +24,9 @@ public:
     }
 
     void insertarGrupo(GrupoHash grupo);
+    void insertarGrupoPorNombre(string nombreGrupo);
+    //void insertarCamposGrupo(string nombreGrupo, string campo, string tipoDato);
+    //void insertarDatosCampos(string nombreGrupo, string campo, string valor);
     GrupoHash buscarGrupo(string nombreGrupo);
     int obtenerPosicionGrupo(string nombreGrupo);
     GrupoHash* obtenerTabla();

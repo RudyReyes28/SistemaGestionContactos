@@ -40,7 +40,7 @@ void TablaCampoHash::rehash() {
 
 }
 
-void TablaCampoHash::insertarGrupo(string nombreCampo) {
+void TablaCampoHash::insertarGrupo(string nombreCampo, string tipoDato) {
     // Verificar si es necesario realizar rehashing
     if ((double)cantidadDatos / tamanoActual >= factorCarga) {
         rehash();
@@ -57,6 +57,7 @@ void TablaCampoHash::insertarGrupo(string nombreCampo) {
     // Insertar el elemento en la tabla
     CampoHash nuevoCampo;
     nuevoCampo.nombreCampo = nombreCampo;
+    nuevoCampo.tipoDato = tipoDato;
     nuevoCampo.indiceCampo = cantidadDatos+1;
     tabla[index] = nuevoCampo;
     cantidadDatos++;
