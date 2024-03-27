@@ -28,9 +28,9 @@ void TablaCampoHash::rehash() {
     for (int i = 0; i < tamanoAnterior; ++i) {
         if (!tabla[i].nombreCampo.empty()) {
             int nuevoIndex = funcionHash(tabla[i].nombreCampo);
-            cout<<"entramos al generaodor index "<<tabla[i].nombreCampo<< i<<endl;
+            //cout<<"entramos al generaodor index "<<tabla[i].nombreCampo<< i<<endl;
             while (!nuevaTabla[nuevoIndex].nombreCampo.empty()) {
-                cout<<"entramos al generaodor index "<<tabla[i].nombreCampo<<endl;
+                //cout<<"entramos al generaodor index "<<tabla[i].nombreCampo<<endl;
                 nuevoIndex = (nuevoIndex + 1) % nuevoTamano;
             }
             nuevaTabla[nuevoIndex] = tabla[i];
@@ -86,11 +86,11 @@ CampoHash *TablaCampoHash::obtenerTabla() {
 }
 
 void TablaCampoHash::imprimirDatosTabla() {
-    cout << "Datos almacenados en la tabla hash:" <<endl;
+    cout << "Datos almacenados en la tabla hash:" << cantidadDatos<<endl;
     cout << "Datos almacenados tiene un tamanio de : "<<tamanoActual <<endl;
     for (int i = 0; i < tamanoActual; ++i) {
         if (!tabla[i].nombreCampo.empty()) {
-            cout << "Clave: " << tabla[i].nombreCampo << ", Valor: " << tabla[i].indiceCampo << " , indice" << funcionHash(tabla[i].nombreCampo) <<endl;
+            cout << "Clave: " << tabla[i].nombreCampo<<" Tipo de Dato: "<<tabla[i].tipoDato << ", Valor: " << tabla[i].indiceCampo << " , indice" << funcionHash(tabla[i].nombreCampo) <<endl;
         }
     }
 }
@@ -118,6 +118,20 @@ void TablaCampoHash::insertarDatosArbolPosicion(int posicion, string valor) {
 
 int TablaCampoHash::getTamanoTabla() {
     return tamanoActual;
+}
+
+string TablaCampoHash::obtenerNombreCampo(int valor) {
+    string nombreCampo = "";
+    for (int i = 0; i < tamanoActual; ++i) {
+        if (!tabla[i].nombreCampo.empty()) {
+            if(tabla[i].indiceCampo == valor){
+                nombreCampo= tabla[i].nombreCampo;
+                break;
+            }
+        }
+    }
+
+    return nombreCampo;
 }
 
 

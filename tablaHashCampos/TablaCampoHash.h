@@ -27,6 +27,7 @@ public:
     void imprimirDatosTabla();
     void insertarDatosArbol(string nombreCampo, string valor);
     void insertarDatosArbolPosicion(int posicion, string valor);
+    string obtenerNombreCampo(int valor);
     int getTamanoTabla();
 };
 

@@ -141,7 +141,7 @@ vector<string> busquedaContactosComando(string comando){
         cout << "Campo: " << campo.first << " Tipo de dato: " << campo.second <<endl;
     }
 
-    string contacto = "ADD CONTACT IN amigos FIELDS (Pedro, Alvarez, 12345678, 02-05-1998), marta, A, carla);";
+    string contacto = "ADD CONTACT IN amigos FIELDS (Pedro, Alvarez, 12345678, 02-05-1998, marta, A, carla);";
     vector<string> contactos = insercionContactosComando(contacto);
 
     string buscar = "FIND CONTACT IN clientes CONTACT-FIELD cumpleanios=2020-21-10;";
