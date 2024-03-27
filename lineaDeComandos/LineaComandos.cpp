@@ -131,3 +131,23 @@ vector<string> busquedaContactosComando(string comando){
 
     return busqueda;
 }
+/*
+ string comando = "ADD NEW-GROUP friends FIELDS (nombre STRING, apodo STRING, celular INTEGER, cumpleanios DATE, apellido STRING, correo STRING);";
+
+    vector<pair<string,string>> campos = creacionDeGruposComando(comando);
+
+    // Imprimir los resultados
+    for (const auto& campo : campos) {
+        cout << "Campo: " << campo.first << " Tipo de dato: " << campo.second <<endl;
+    }
+
+    string contacto = "ADD CONTACT IN amigos FIELDS (Pedro, Alvarez, 12345678, 02-05-1998), marta, A, carla);";
+    vector<string> contactos = insercionContactosComando(contacto);
+
+    string buscar = "FIND CONTACT IN clientes CONTACT-FIELD cumpleanios=2020-21-10;";
+    vector<string> busqueda = busquedaContactosComando(buscar);
+    for(int i=0; i<busqueda.size(); i++){
+        cout<<"dato: "<<busqueda[i]<<endl;
+    }
+
+ */

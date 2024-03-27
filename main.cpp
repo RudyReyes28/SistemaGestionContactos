@@ -103,25 +103,61 @@ tabla.insertarDatosCampos("Clientes","nombre","Carlos");*/
 //raiz = tabla.buscarGrupo("Clientes").campos.buscarGrupo("nombre").arbol.getArbol();
 //dot.obtenerArchivoDOT(raiz);
 int main() {
+    TablaGruposHash tabla;
 
-    //string comando = "ADD NEW-GROUP proveedores FIELDS (empresa STRING, direccion STRING, tel1 INTEGER, categoria CHAR);";
-    string comando = "ADD NEW-GROUP friends FIELDS (nombre STRING, apodo STRING, celular INTEGER, cumpleanios DATE, apellido STRING, correo STRING);";
+    tabla.insertarGrupoPorNombre("Clientes");
+    tabla.insertarGrupoPorNombre("Trabajadores");
+    tabla.insertarGrupoPorNombre("Proveedores");
 
-    /*vector<pair<string,string>> campos = creacionDeGruposComando(comando);
+    tabla.insertarCamposGrupo("Clientes","nombre","STRING");
+    tabla.insertarCamposGrupo("Clientes","apellido","STRING");
+    tabla.insertarCamposGrupo("Clientes","telefono","INTEGER");
 
-    // Imprimir los resultados
-    for (const auto& campo : campos) {
-        cout << "Campo: " << campo.first << " Tipo de dato: " << campo.second <<endl;
-    }*/
 
-    string contacto = "ADD CONTACT IN amigos FIELDS (Pedro, Alvarez, 12345678, 02-05-1998), marta, A, carla);";
-    vector<string> contactos = insercionContactosComando(contacto);
+    tabla.insertarDatosCampos("Clientes","nombre","Juana");
+    tabla.insertarDatosCampos("Clientes","nombre","Pedro");
+    tabla.insertarDatosCampos("Clientes","nombre","Julian");
+    tabla.insertarDatosCampos("Clientes","nombre","Marta");
+    tabla.insertarDatosCampos("Clientes","nombre","Carlos");
 
-    string buscar = "FIND CONTACT IN clientes CONTACT-FIELD cumpleanios=2020-21-10;";
-    vector<string> busqueda = busquedaContactosComando(buscar);
-    for(int i=0; i<busqueda.size(); i++){
-        cout<<"dato: "<<busqueda[i]<<endl;
-    }
+    tabla.insertarDatosCampos("Clientes","telefono","12378567");
+    tabla.insertarDatosCampos("Clientes","telefono","78121456");
+    tabla.insertarDatosCampos("Clientes","telefono","74821471");
+    tabla.insertarDatosCampos("Clientes","telefono","78164321");
+    tabla.insertarDatosCampos("Clientes","telefono","71295304");
+
+    tabla.buscarGrupo("Clientes").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
+    tabla.buscarGrupo("Clientes").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
+
+    cout<<endl;
+    tabla.imprimirDatosTabla();
+
+
+    tabla.insertarGrupoPorNombre("Empresarios");
+
+    tabla.insertarCamposGrupo("Proveedores","nombre","STRING");
+    tabla.insertarCamposGrupo("Proveedores","apellido","STRING");
+    tabla.insertarCamposGrupo("Proveedores","telefono","INTEGER");
+
+
+    tabla.insertarDatosCampos("Proveedores","nombre","Juana");
+    tabla.insertarDatosCampos("Proveedores","nombre","Pedro");
+    tabla.insertarDatosCampos("Proveedores","nombre","Julian");
+    tabla.insertarDatosCampos("Proveedores","nombre","Marta");
+    tabla.insertarDatosCampos("Proveedores","nombre","Carlos");
+
+    tabla.insertarDatosCampos("Proveedores","telefono","12378567");
+    tabla.insertarDatosCampos("Proveedores","telefono","78121456");
+    tabla.insertarDatosCampos("Proveedores","telefono","74821471");
+    tabla.insertarDatosCampos("Proveedores","telefono","78164321");
+    tabla.insertarDatosCampos("Proveedores","telefono","71295304");
+
+    cout<<"Imprimiendo proveedores"<<endl;
+    tabla.buscarGrupo("Proveedores").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
+    tabla.buscarGrupo("Proveedores").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
+    cout<<endl;
+    tabla.imprimirDatosTabla();
+
 
      return 0;
 

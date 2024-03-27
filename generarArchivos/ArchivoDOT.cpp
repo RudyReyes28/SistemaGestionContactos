@@ -46,8 +46,11 @@ void ArchivoDOT::generarDOTCampos(TablaCampoHash tabla) {
         archivoDot << "digraph ArbolAVL {\n";
         archivoDot << "node [shape=circle, style=filled, fillcolor=lightblue, fontcolor=black]" << ";\n";
         CampoHash* campos = tabla.obtenerTabla();
+        int tamano = tamano;
         for(int i=0; i< tabla.getTamanoTabla(); i++){
             if (!campos[i].nombreCampo.empty()) {
+                cout<<"Entrando al metodo de archivosDOT"<<endl;
+                cout<<campos[i].nombreCampo<<endl;
                 NodoArbol *raiz = campos[i].arbol.getArbol();
                 generarArchivoDOT(raiz,archivoDot);
             }
@@ -60,5 +63,6 @@ void ArchivoDOT::generarDOTCampos(TablaCampoHash tabla) {
         system("dot -Tpng ../graph.dot -o ../graph.png");
         cout << "Grafico generado correctamente." << endl;
     }
+
     cout<<"metodo completado"<<endl;
 }

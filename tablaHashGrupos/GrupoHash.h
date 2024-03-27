@@ -10,7 +10,7 @@
 using namespace std;
 struct GrupoHash{
     string nombreGrupo; //clave
-    //TablaCampoHash campos; //tabla hash asociada a los campos
+    TablaCampoHash* campos; //tabla hash asociada a los campos
     string valor;
 
 };

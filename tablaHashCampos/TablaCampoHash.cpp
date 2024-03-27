@@ -19,14 +19,18 @@ int TablaCampoHash::funcionHash(string &nombreCampo) {
 }
 
 void TablaCampoHash::rehash() {
+    int tamanoAnterior = tamanoActual;
     int nuevoTamano = tamanoActual * 2;
+    tamanoActual = nuevoTamano;
     CampoHash* nuevaTabla = new CampoHash[nuevoTamano];
 
     // Copiar elementos de la tabla original a la nueva tabla
-    for (int i = 0; i < tamanoActual; ++i) {
+    for (int i = 0; i < tamanoAnterior; ++i) {
         if (!tabla[i].nombreCampo.empty()) {
             int nuevoIndex = funcionHash(tabla[i].nombreCampo);
+            cout<<"entramos al generaodor index "<<tabla[i].nombreCampo<< i<<endl;
             while (!nuevaTabla[nuevoIndex].nombreCampo.empty()) {
+                cout<<"entramos al generaodor index "<<tabla[i].nombreCampo<<endl;
                 nuevoIndex = (nuevoIndex + 1) % nuevoTamano;
             }
             nuevaTabla[nuevoIndex] = tabla[i];
@@ -36,7 +40,7 @@ void TablaCampoHash::rehash() {
     // Eliminar la tabla original y actualizar punteros y tamanio
     delete[] tabla;
     tabla = nuevaTabla;
-    tamanoActual = nuevoTamano;
+
 
 }
 

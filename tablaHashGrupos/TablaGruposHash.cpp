@@ -23,11 +23,13 @@ int TablaGruposHash::funcionHash(string &nombreGrupo) {
 }
 
 void TablaGruposHash::rehash() {
+    int tamanoAnterior = tamanoActual;
     int nuevoTamano = tamanoActual * 2;
+    tamanoActual = nuevoTamano;
     GrupoHash* nuevaTabla = new GrupoHash[nuevoTamano];
 
     // Copiar elementos de la tabla original a la nueva tabla
-    for (int i = 0; i < tamanoActual; ++i) {
+    for (int i = 0; i < tamanoAnterior; ++i) {
         if (!tabla[i].nombreGrupo.empty()) {
             int nuevoIndex = funcionHash(tabla[i].nombreGrupo);
             while (!nuevaTabla[nuevoIndex].nombreGrupo.empty()) {
@@ -40,7 +42,6 @@ void TablaGruposHash::rehash() {
     // Eliminar la tabla original y actualizar punteros y tamanio
     delete[] tabla;
     tabla = nuevaTabla;
-    tamanoActual = nuevoTamano;
 
 }
 
@@ -110,19 +111,19 @@ void TablaGruposHash::insertarGrupoPorNombre(string nombreGrupo) {
     // Insertar el elemento en la tabla
     GrupoHash nuevoGrupo;
     nuevoGrupo.nombreGrupo = nombreGrupo;
+    nuevoGrupo.campos = new TablaCampoHash();
     nuevoGrupo.valor = nombreGrupo;
 
     tabla[index] = nuevoGrupo;
     cantidadDatos++;
 }
-/*
+
 void TablaGruposHash::insertarCamposGrupo(string nombreGrupo, string campo, string tipoDato) {
     int index = funcionHash(nombreGrupo);
-    tabla[index].campos.insertarGrupo(campo, tipoDato);
-}*/
-/*
+    tabla[index].campos->insertarGrupo(campo, tipoDato);
+}
+
 void TablaGruposHash::insertarDatosCampos(string nombreGrupo, string campo, string valor) {
     int index = funcionHash(nombreGrupo);
-    tabla[index].campos.insertarDatosArbol(campo,valor);
-
-}*/
+    tabla[index].campos->insertarDatosArbol(campo,valor);
+}
