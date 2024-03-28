@@ -134,5 +134,52 @@ void ArbolAVL::imprimirInOrden() {
 
 }
 
+int ArbolAVL::valorNodoArbol(NodoArbol *raiz, string dato) {
+    int valor = 0;
+    if(raiz != nullptr) {
+        valor = valorNodoArbol(raiz->izq, dato); // Explorar subárbol izquierdo
+        if (valor != 0) {
+            return valor; // Si se encontró el dato en el subárbol izquierdo, devolver el valor
+        }
+
+        if (raiz->dato == dato) {
+            valor = raiz->valor; // Si se encuentra el dato en el nodo actual, devolver su valor
+        }
+
+        if (valor == 0) {
+            valor = valorNodoArbol(raiz->der, dato); // Explorar subárbol derecho solo si el dato aún no se ha encontrado
+        }
+    }
+
+    return valor;
+}
+
+int ArbolAVL::obtenerValorNodoArbol(string dato) {
+    return valorNodoArbol(arbol,dato);
+}
+
+string ArbolAVL::datoNodoArbol(NodoArbol *raiz, int valor) {
+    string dato = "";
+    if(raiz!= nullptr){
+
+        if(raiz->valor == valor){
+            dato = raiz->dato;
+            return dato;
+        }
+
+        if(valor<raiz->valor){
+            return datoNodoArbol(raiz->izq, valor);
+        }else{
+            return datoNodoArbol(raiz->der, valor);
+        }
+    }
+
+    return dato;
+}
+
+string ArbolAVL::obtenerDatoNodoArbol(int valor) {
+    return datoNodoArbol(arbol, valor);
+}
+
 
 

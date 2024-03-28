@@ -18,6 +18,8 @@ private:
     NodoArbol* rotarIzq(NodoArbol* x);
     int balance(NodoArbol *nodo);
     NodoArbol* insertar(NodoArbol *nodo, string &valor);
+    int valorNodoArbol(NodoArbol * raiz, string dato);
+    string datoNodoArbol(NodoArbol * raiz, int valor);
 
 public:
     ArbolAVL();
@@ -27,5 +29,8 @@ public:
     void insertarEnArbol(string valor);
     void imprimirInOrden();
     NodoArbol* getArbol();
+    int obtenerValorNodoArbol(string dato);
+    string obtenerDatoNodoArbol(int valor);
+
 };
 #endif //GESTIONDECONTACTOS_ARBOLAVL_H

@@ -4,6 +4,7 @@
 #include "tablaHashCampos/TablaCampoHash.h"
 #include "generarArchivos/ArchivoDOT.h"
 #include "lineaDeComandos/LineaComandos.h"
+#include "exportacionContactos/ExportarContacto.h"
 #include <fstream>
 #include <vector>
 #include <sstream>
@@ -116,11 +117,48 @@ void opcionInsercionDeContactos(TablaGruposHash &tabla){
         }
 
     }
-    /*Clave: correo, Valor: 4 , indice0
-Clave: apellido, Valor: 2 , indice2
-Clave: nombre, Valor: 1 , indice3
-Clave: celular, Valor: 3 , indice4*/
 }
+
+void opcionBusquedaDeContactos(TablaGruposHash &tabla){
+    string comando;
+    cout<<"Digite el comando para buscar un contacto: "<<endl;
+    getline(cin, comando);
+    vector<string> busqueda = busquedaContactosComando(comando);
+
+    if (busqueda.empty()) {
+        cout << "El comando no es correcto." << endl;
+    } else {
+        string nombreG = busqueda[0];
+        string campo = busqueda[1];
+        string valor = busqueda[2];
+        int valorNodo = tabla.buscarGrupo(nombreG).campos->buscarGrupo(campo).arbol.obtenerValorNodoArbol(valor);
+        int cantidadDatos = tabla.buscarGrupo(nombreG).campos->obtenerCantidadDatos();
+
+        string datosContacto = "";
+        for(int i=1; i<= cantidadDatos; i++){
+            string nombreCampo = tabla.buscarGrupo(nombreG).campos->obtenerNombreCampo(i);
+            datosContacto+= nombreCampo+": ";
+            string dato = tabla.buscarGrupo(nombreG).campos->buscarGrupo(nombreCampo).arbol.obtenerDatoNodoArbol(valorNodo);
+            datosContacto+=dato+"\n";
+
+        }
+        cout<<datosContacto<<endl;
+
+    }
+}
+
+void opcionExportarContactos(){
+    //string folderName = "../mi_carpeta";
+    string nombreCarpeta = "../clientes";
+    string nombreArchivo = "roman";
+    string contacto = "nombre: roman\napellido:vasquez\ntelefono:45789632";
+    generarCarpeta(nombreCarpeta);
+
+    exportarContacto(nombreCarpeta,nombreArchivo,contacto);
+
+
+}
+
 int main() {
     TablaGruposHash tabla;
 
@@ -156,9 +194,15 @@ int main() {
                 break;
             case 2:
                 //ADD CONTACT IN Clientes FIELDS (Pedro, Alvarez, 12345678);
+                //ADD CONTACT IN Clientes FIELDS (Juan, Perez, 98765432);
+                //ADD CONTACT IN Clientes FIELDS (Maria, Garcia, 65432198);
+                //ADD CONTACT IN Clientes FIELDS (Luis, Gonzalez, 12348765);
+                //ADD CONTACT IN Clientes FIELDS (Ana, Martinez, 78901234);
                 opcionInsercionDeContactos(tabla);
                 break;
             case 3:
+                //FIND CONTACT IN Clientes CONTACT-FIELD nombre=Pedro;
+                opcionBusquedaDeContactos(tabla);
                 break;
             case 4:
                 break;
@@ -167,6 +211,7 @@ int main() {
             case 6:
                 break;
             case 7:
+                opcionExportarContactos();
                 break;
 
         }

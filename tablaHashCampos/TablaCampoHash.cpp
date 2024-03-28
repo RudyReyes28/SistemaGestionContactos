@@ -134,6 +134,10 @@ string TablaCampoHash::obtenerNombreCampo(int valor) {
     return nombreCampo;
 }
 
+int TablaCampoHash::obtenerCantidadDatos() {
+    return cantidadDatos;
+}
+
 
 
 

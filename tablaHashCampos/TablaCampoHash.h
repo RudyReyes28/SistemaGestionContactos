@@ -29,6 +29,7 @@ public:
     void insertarDatosArbolPosicion(int posicion, string valor);
     string obtenerNombreCampo(int valor);
     int getTamanoTabla();
+    int obtenerCantidadDatos();
 };
 
 #endif //GESTIONDECONTACTOS_TABLACAMPOHASH_H
