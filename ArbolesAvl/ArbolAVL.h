@@ -31,6 +31,7 @@ public:
     NodoArbol* getArbol();
     int obtenerValorNodoArbol(string dato);
     string obtenerDatoNodoArbol(int valor);
+    int obtenerNumeroDeDatos();
 
 };
 #endif //GESTIONDECONTACTOS_ARBOLAVL_H

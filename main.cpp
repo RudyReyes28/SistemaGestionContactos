@@ -147,20 +147,53 @@ void opcionBusquedaDeContactos(TablaGruposHash &tabla){
     }
 }
 
-void opcionExportarContactos(){
-    //string folderName = "../mi_carpeta";
-    string nombreCarpeta = "../clientes";
-    string nombreArchivo = "roman";
-    string contacto = "nombre: roman\napellido:vasquez\ntelefono:45789632";
-    generarCarpeta(nombreCarpeta);
+void opcionExportarContactos(TablaGruposHash &tabla){
+    /*
+     Esta opción solamente solicitará el nombre del grupo que se desea exportar. Para
+esto deberá mostrar el listado de grupos que contiene el sistema.
 
-    exportarContacto(nombreCarpeta,nombreArchivo,contacto);
+
+      */
+    //string folderName = "../mi_carpeta";
+
+    tabla.imprimirDatosTabla();
+
+    string nombreG = "";
+    cout<<"Escriba el nombre del grupo:"<<endl;
+    getline(cin, nombreG);
+
+    int cantidadDatos = tabla.buscarGrupo(nombreG).campos->obtenerCantidadDatos();
+    int cantidadDeContactos = tabla.buscarGrupo(nombreG).campos->obtenerCantidadDatosArbol();
+
+    string nombreCarpeta = "../"+nombreG;
+    generarCarpeta(nombreCarpeta);
+    cout<<"cantidad de contactos: "<<cantidadDeContactos<<endl;
+    for(int i=1; i<cantidadDeContactos; i++ ){
+        string datosContacto = "";
+        string nombreCampo ="";
+        string nombreArchivo = "";
+        for(int j=1; j<= cantidadDatos; j++){
+             nombreCampo = tabla.buscarGrupo(nombreG).campos->obtenerNombreCampo(j);
+            datosContacto+= nombreCampo+": ";
+            string dato = tabla.buscarGrupo(nombreG).campos->buscarGrupo(nombreCampo).arbol.obtenerDatoNodoArbol(i);
+            if(j==1){
+                nombreArchivo = nombreG+dato;
+            }
+            datosContacto+=dato+"\n";
+
+        }
+
+
+        exportarContacto(nombreCarpeta,nombreArchivo,datosContacto);
+
+    }
 
 
 }
 
 int main() {
     TablaGruposHash tabla;
+
 
     int opcion = 0;
     do{
@@ -211,7 +244,7 @@ int main() {
             case 6:
                 break;
             case 7:
-                opcionExportarContactos();
+                opcionExportarContactos(tabla);
                 break;
 
         }
@@ -220,6 +253,7 @@ int main() {
     //tabla.imprimirDatosTabla();
     //tabla.buscarGrupo("Clientes").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
     //tabla.buscarGrupo("Clientes").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
+
      return 0;
 
 }

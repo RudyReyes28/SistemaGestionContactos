@@ -85,11 +85,12 @@ GrupoHash *TablaGruposHash::obtenerTabla() {
 }
 
 void TablaGruposHash::imprimirDatosTabla() {
-    cout << "Datos almacenados en la tabla hash:" <<cantidadDatos<<endl;
-    cout << "Datos almacenados tiene un tamanio de : "<<tamanoActual <<endl;
+    //cout << "Datos almacenados en la tabla hash:" <<cantidadDatos<<endl;
+    //cout << "Datos almacenados tiene un tamanio de : "<<tamanoActual <<endl;
     for (int i = 0; i < tamanoActual; ++i) {
         if (!tabla[i].nombreGrupo.empty()) {
-            cout << "Clave: " << tabla[i].nombreGrupo << " , indice" << funcionHash(tabla[i].nombreGrupo) <<endl;
+            //cout << "Clave: " << tabla[i].nombreGrupo << " , indice" << funcionHash(tabla[i].nombreGrupo) <<endl;
+            cout << "Nombre del Grupo: " << tabla[i].nombreGrupo <<endl;
         }
     }
 }

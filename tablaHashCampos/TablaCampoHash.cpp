@@ -138,6 +138,17 @@ int TablaCampoHash::obtenerCantidadDatos() {
     return cantidadDatos;
 }
 
+int TablaCampoHash::obtenerCantidadDatosArbol() {
+
+    for (int i = 0; i < tamanoActual; ++i) {
+        if (!tabla[i].nombreCampo.empty()) {
+            return tabla[i].arbol.obtenerNumeroDeDatos();
+        }
+    }
+
+    return 0;
+}
+
 
 
 

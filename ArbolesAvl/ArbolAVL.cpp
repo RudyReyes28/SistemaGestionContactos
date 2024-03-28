@@ -181,5 +181,9 @@ string ArbolAVL::obtenerDatoNodoArbol(int valor) {
     return datoNodoArbol(arbol, valor);
 }
 
+int ArbolAVL::obtenerNumeroDeDatos() {
+    return numeroDato;
+}
+
 
 

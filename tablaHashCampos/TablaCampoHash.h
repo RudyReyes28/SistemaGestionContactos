@@ -30,6 +30,7 @@ public:
     string obtenerNombreCampo(int valor);
     int getTamanoTabla();
     int obtenerCantidadDatos();
+    int obtenerCantidadDatosArbol();
 };
 
 #endif //GESTIONDECONTACTOS_TABLACAMPOHASH_H
