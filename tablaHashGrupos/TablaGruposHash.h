@@ -30,6 +30,7 @@ public:
     GrupoHash buscarGrupo(string nombreGrupo);
     int obtenerPosicionGrupo(string nombreGrupo);
     GrupoHash* obtenerTabla();
+    int obtenerTamanoActual();
     void imprimirDatosTabla();
 };
 

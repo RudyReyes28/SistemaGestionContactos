@@ -194,6 +194,26 @@ esto deberá mostrar el listado de grupos que contiene el sistema.
 int main() {
     TablaGruposHash tabla;
 
+    tabla.insertarGrupoPorNombre("Clientes");
+    tabla.insertarGrupoPorNombre("Trabajadores");
+    tabla.insertarGrupoPorNombre("Proveedores");
+
+    tabla.insertarCamposGrupo("Clientes","nombreC","STRING");
+    tabla.insertarCamposGrupo("Clientes","apellidoC","STRING");
+    tabla.insertarCamposGrupo("Clientes","telefonoC","INTEGER");
+
+    tabla.insertarCamposGrupo("Trabajadores","nombreT","STRING");
+    tabla.insertarCamposGrupo("Trabajadores","apellidoT","STRING");
+    tabla.insertarCamposGrupo("Trabajadores","telefonoT","INTEGER");
+
+    tabla.insertarCamposGrupo("Proveedores","nombreP","STRING");
+    tabla.insertarCamposGrupo("Proveedores","apellidoP","STRING");
+    tabla.insertarCamposGrupo("Proveedores","telefonoP","INTEGER");
+    ArchivoDOT dot;
+    dot.graficarTablaHash(tabla);
+    /*
+    TablaGruposHash tabla;
+
 
     int opcion = 0;
     do{
@@ -253,7 +273,7 @@ int main() {
     //tabla.imprimirDatosTabla();
     //tabla.buscarGrupo("Clientes").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
     //tabla.buscarGrupo("Clientes").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
-
+*/
      return 0;
 
 }

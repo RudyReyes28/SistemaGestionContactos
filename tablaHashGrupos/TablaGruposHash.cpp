@@ -128,3 +128,7 @@ void TablaGruposHash::insertarDatosCampos(string nombreGrupo, string campo, stri
     int index = funcionHash(nombreGrupo);
     tabla[index].campos->insertarDatosArbol(campo,valor);
 }
+
+int TablaGruposHash::obtenerTamanoActual() {
+    return tamanoActual;
+}

@@ -1,0 +1,82 @@
+digraph tablaHash {
+node [shape=plaintext, fontname=Arial];
+    entrada [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="entrada">ENTRADA</TD></TR>
+        <TR><TD PORT="Proveedores">Proveedores</TD></TR>
+        <TR><TD PORT="Clientes">Clientes</TD></TR>
+        <TR><TD PORT="Trabajadores">Trabajadores</TD></TR>
+    </TABLE>>];
+    valores [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="val1">GRUPOS</TD></TR>
+        <TR><TD PORT="null0">     </TD></TR>
+        <TR><TD PORT="tablac1">0x2ba38185d40</TD></TR>
+        <TR><TD PORT="null2">     </TD></TR>
+        <TR><TD PORT="tablac3">0x2ba38185dd0</TD></TR>
+        <TR><TD PORT="tablac4">0x2ba38185e18</TD></TR>
+    </TABLE>>];
+entrada:Proveedores -> valores:tablac1;
+entrada:Clientes -> valores:tablac3;
+entrada:Trabajadores -> valores:tablac4;
+    campoProveedores[label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="campos1">CAMPOS</TD></TR>
+        <TR><TD PORT="telefonoP">telefonoP</TD></TR>
+        <TR><TD PORT="apellidoP">apellidoP</TD></TR>
+        <TR><TD PORT="nombreP">nombreP</TD></TR>
+    </TABLE>>];
+    arbolProveedores [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="arbol">Arboles</TD></TR>
+        <TR><TD PORT="arbol0">0x2ba38186238</TD></TR>
+        <TR><TD PORT="null1">     </TD></TR>
+        <TR><TD PORT="arbol2">0x2ba381862e8</TD></TR>
+        <TR><TD PORT="arbol3">0x2ba38186340</TD></TR>
+        <TR><TD PORT="null4">     </TD></TR>
+    </TABLE>>];
+campoProveedores:telefonoP ->arbolProveedores:arbol0;
+campoProveedores:apellidoP ->arbolProveedores:arbol2;
+campoProveedores:nombreP ->arbolProveedores:arbol3;
+    campoClientes[label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="campos3">CAMPOS</TD></TR>
+        <TR><TD PORT="nombreC">nombreC</TD></TR>
+        <TR><TD PORT="telefonoC">telefonoC</TD></TR>
+        <TR><TD PORT="apellidoC">apellidoC</TD></TR>
+    </TABLE>>];
+    arbolClientes [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="arbol">Arboles</TD></TR>
+        <TR><TD PORT="arbol0">0x2ba38185e98</TD></TR>
+        <TR><TD PORT="null1">     </TD></TR>
+        <TR><TD PORT="arbol2">0x2ba38185f48</TD></TR>
+        <TR><TD PORT="null3">     </TD></TR>
+        <TR><TD PORT="arbol4">0x2ba38185ff8</TD></TR>
+    </TABLE>>];
+campoClientes:nombreC ->arbolClientes:arbol0;
+campoClientes:telefonoC ->arbolClientes:arbol2;
+campoClientes:apellidoC ->arbolClientes:arbol4;
+    campoTrabajadores[label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="campos4">CAMPOS</TD></TR>
+        <TR><TD PORT="apellidoT">apellidoT</TD></TR>
+        <TR><TD PORT="nombreT">nombreT</TD></TR>
+        <TR><TD PORT="telefonoT">telefonoT</TD></TR>
+    </TABLE>>];
+    arbolTrabajadores [label=<
+    <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+        <TR><TD PORT="arbol">Arboles</TD></TR>
+        <TR><TD PORT="null0">     </TD></TR>
+        <TR><TD PORT="arbol1">0x2ba381860c0</TD></TR>
+        <TR><TD PORT="arbol2">0x2ba38186118</TD></TR>
+        <TR><TD PORT="null3">     </TD></TR>
+        <TR><TD PORT="arbol4">0x2ba381861c8</TD></TR>
+    </TABLE>>];
+campoTrabajadores:apellidoT ->arbolTrabajadores:arbol1;
+campoTrabajadores:nombreT ->arbolTrabajadores:arbol2;
+campoTrabajadores:telefonoT ->arbolTrabajadores:arbol4;
+valores:tablac1 -> campoProveedores:campos1;
+valores:tablac3 -> campoClientes:campos3;
+valores:tablac4 -> campoTrabajadores:campos4;
+}
