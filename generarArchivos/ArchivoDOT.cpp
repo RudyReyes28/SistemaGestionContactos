@@ -37,21 +37,19 @@ void ArchivoDOT::obtenerArchivoDOT(NodoArbol *raiz) {
     }
 }
 
-void ArchivoDOT::generarDOTCampos(TablaCampoHash &tabla) {
-    cout<<"Entrando Correctamente"<<endl;
-    ofstream archivoDot("../graph.dot"); // Crea un archivo DOT
+void ArchivoDOT::graficarArbolesGrupo(string nombreG,TablaGruposHash &tabla) {
+    ofstream archivoDot("../arbolesGrupo.dot"); // Crea un archivo DOT
     if (!archivoDot.is_open()) {
         cerr << "Error al abrir el archivo." << endl;
     }else {
         archivoDot << "digraph ArbolAVL {\n";
         archivoDot << "node [shape=circle, style=filled, fillcolor=lightblue, fontcolor=black]" << ";\n";
-        CampoHash* campos = tabla.obtenerTabla();
-        int tamano = tamano;
-        for(int i=0; i< tabla.getTamanoTabla(); i++){
+        CampoHash* campos = tabla.buscarGrupo(nombreG).campos->obtenerTabla();
+        int tamano = tabla.buscarGrupo(nombreG).campos->getTamanoTabla();
+        for(int i=0; i< tamano; i++){
             if (!campos[i].nombreCampo.empty()) {
-                cout<<"Entrando al metodo de archivosDOT"<<endl;
-                cout<<campos[i].nombreCampo<<endl;
                 NodoArbol *raiz = campos[i].arbol.getArbol();
+                archivoDot<<campos[i].nombreCampo<<" ->"<<raiz->dato<<";\n";
                 generarArchivoDOT(raiz,archivoDot);
             }
         }
@@ -60,11 +58,9 @@ void ArchivoDOT::generarDOTCampos(TablaCampoHash &tabla) {
         archivoDot.close();
 
         // Llamada al comando dot para generar la imagen del árbol
-        system("dot -Tpng ../graph.dot -o ../graph.png");
+        system("dot -Tpng ../arbolesGrupo.dot -o ../arbolesGrupo.png");
         cout << "Grafico generado correctamente." << endl;
     }
-
-    cout<<"metodo completado"<<endl;
 }
 
 void ArchivoDOT::archivoDOTTablaCampos(ofstream &archivoDot, TablaGruposHash &tabla) {
@@ -89,6 +85,8 @@ void ArchivoDOT::archivoDOTTablaCampos(ofstream &archivoDot, TablaGruposHash &ta
             archivoDot<<"    <TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n";
             archivoDot<<"        <TR><TD PORT=\"arbol\">Arboles</TD></TR>\n";
 
+            //AGREGRAMOS LOS ARBOLES A LA GRAFICA
+
             for(int j=0; j<tamanoTablaC; j++){
                 if(!tablaCampo[j].nombreCampo.empty()){
                     archivoDot<<"        <TR><TD PORT=\""<<"arbol"<<j<<"\">"<<reinterpret_cast<void*>(&tablaCampo[j].arbol)<<"</TD></TR>\n";
@@ -99,9 +97,21 @@ void ArchivoDOT::archivoDOTTablaCampos(ofstream &archivoDot, TablaGruposHash &ta
 
             archivoDot<<"    </TABLE>>];\n";
 
+            //CONECTAMOS LOS CAMPOS CON LOS ARBOLES
             for(int j=0; j<tamanoTablaC; j++){
                 if(!tablaCampo[j].nombreCampo.empty()){
                     archivoDot<<"campo"<<nuevaTabla[i].nombreGrupo<<":"<<tablaCampo[j].nombreCampo<<" ->"<< "arbol"<<nuevaTabla[i].nombreGrupo<<":"<<"arbol"<<j <<";\n";
+                }
+            }
+
+            //AQUI PODRIAMOS CONECTAR LA GRAFICA CON LOS ARBOLES
+
+            for(int j=0; j< tamanoTablaC; j++){
+                if (!tablaCampo[j].nombreCampo.empty()) {
+
+                    NodoArbol *raiz = tablaCampo[j].arbol.getArbol();
+                    archivoDot<<"arbol"<<nuevaTabla[i].nombreGrupo<<":"<<"arbol"<<j <<" ->"<<raiz->dato<<";\n";
+                    generarArchivoDOT(raiz,archivoDot);
                 }
             }
 
@@ -110,7 +120,7 @@ void ArchivoDOT::archivoDOTTablaCampos(ofstream &archivoDot, TablaGruposHash &ta
     }
     for(int i = 0; i < tamanoActual; ++i){
         if (!nuevaTabla[i].nombreGrupo.empty()) {
-            archivoDot<<"valores:"<<"tablac"<<i <<" -> ""campo"<<nuevaTabla[i].nombreGrupo<<":"<<"campos"<<i <<";\n";
+            archivoDot<<"valores:"<<"tablac"<<i <<" -> campo"<<nuevaTabla[i].nombreGrupo<<":"<<"campos"<<i <<";\n";
         }
     }
 
@@ -157,7 +167,7 @@ void ArchivoDOT::archivoDOTTablaHashGlobal(ofstream& archivoDot, TablaGruposHash
 
 }
 
-void ArchivoDOT::graficarTablaHash(TablaGruposHash &tabla) {
+void ArchivoDOT::graficarTablaHashGlobal(TablaGruposHash &tabla) {
 
     ofstream archivoDot("../tablaHash.dot"); // Crea un archivo DOT
     if (!archivoDot.is_open()) {
@@ -178,5 +188,85 @@ void ArchivoDOT::graficarTablaHash(TablaGruposHash &tabla) {
     }
 
 }
+void ArchivoDOT::archivoDOTCamposGrupo(ofstream& archivoDot, string nombre, TablaGruposHash &tabla) {
+    int tamanoActual = tabla.obtenerTamanoActual();
+    GrupoHash* nuevaTabla = tabla.obtenerTabla();
+    for(int i = 0; i < tamanoActual; ++i){
+        if (!nuevaTabla[i].nombreGrupo.empty()) {
+            if(nuevaTabla[i].nombreGrupo == nombre){
+                archivoDot<<"    grupo"<<nombre<< "[label=<\n";
+                archivoDot<<"    <TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n";
+                archivoDot<<"        <TR><TD PORT=\"grupo"<<"\""<<">"<<nombre<<"</TD></TR>\n";
+                archivoDot<<"    </TABLE>>];\n";
+
+                archivoDot<<"    campo"<<nombre<< "[label=<\n";
+                archivoDot<<"    <TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n";
+                archivoDot<<"        <TR><TD PORT=\"campos"<<"\""<<">CAMPOS</TD></TR>\n";
+                CampoHash* tablaCampo = tabla.buscarGrupo(nuevaTabla[i].nombreGrupo).campos->obtenerTabla();
+                int tamanoTablaC = tabla.buscarGrupo(nuevaTabla[i].nombreGrupo).campos->getTamanoTabla();
+
+                for(int j=0; j<tamanoTablaC; j++){
+                    if(!tablaCampo[j].nombreCampo.empty()){
+                        archivoDot<<"        <TR><TD PORT=\""<<tablaCampo[j].nombreCampo<<"\">"<<tablaCampo[j].nombreCampo<<"</TD></TR>\n";
+                    }
+                }
+
+                archivoDot<<"    </TABLE>>];\n";
+
+                archivoDot<<"    arbol"<<nuevaTabla[i].nombreGrupo<<" [label=<\n";
+                archivoDot<<"    <TABLE BORDER=\"0\" CELLBORDER=\"1\" CELLSPACING=\"0\">\n";
+                archivoDot<<"        <TR><TD PORT=\"arbol\">Arboles</TD></TR>\n";
+
+                //AGREGRAMOS LOS ARBOLES A LA GRAFICA
+
+                for(int j=0; j<tamanoTablaC; j++){
+                    if(!tablaCampo[j].nombreCampo.empty()){
+                        archivoDot<<"        <TR><TD PORT=\""<<"arbol"<<j<<"\">"<<reinterpret_cast<void*>(&tablaCampo[j].arbol)<<"</TD></TR>\n";
+                    }else{
+                        archivoDot<<"        <TR><TD PORT=\""<<"null"<<j <<"\">"<<"     "<<"</TD></TR>\n";
+                    }
+                }
+
+                archivoDot<<"    </TABLE>>];\n";
+
+                //CONECTAMOS LOS CAMPOS CON LOS ARBOLES
+                for(int j=0; j<tamanoTablaC; j++){
+                    if(!tablaCampo[j].nombreCampo.empty()){
+                        archivoDot<<"campo"<<nuevaTabla[i].nombreGrupo<<":"<<tablaCampo[j].nombreCampo<<" ->"<< "arbol"<<nuevaTabla[i].nombreGrupo<<":"<<"arbol"<<j <<";\n";
+                    }
+                }
+
+                archivoDot<<"grupo"<<nombre<<":"<<"grupo -> campo"<<nombre<<": campos;\n";
+            }
+
+
+        }
+
+    }
+
+}
+
+void ArchivoDOT::graficarGrupoHash(string nombre, TablaGruposHash &tabla) {
+    ofstream archivoDot("../grupoHash.dot"); // Crea un archivo DOT
+    if (!archivoDot.is_open()) {
+        cerr << "Error al abrir el archivo." << endl;
+    }else {
+        archivoDot << "digraph tablaHash {\n";
+        archivoDot<<"node [shape=plaintext, fontname=Arial];\n";
+
+        archivoDOTCamposGrupo(archivoDot,nombre,tabla);
+
+        archivoDot << "}\n";
+
+        archivoDot.close();
+
+        // Llamada al comando dot para generar la imagen del árbol
+        system("dot -Tpng ../grupoHash.dot -o ../grupoHash.png");
+        cout << "Grafico generado correctamente." << endl;
+    }
+
+}
+
+
 
 

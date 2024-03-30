@@ -14,9 +14,11 @@ class ArchivoDOT{
 public:
     void generarArchivoDOT(NodoArbol* raiz, ofstream& archivoDot);
     void obtenerArchivoDOT(NodoArbol *raiz);
-    void generarDOTCampos(TablaCampoHash &tabla);
+    void graficarArbolesGrupo(string nombreG,TablaGruposHash &tabla);
     void archivoDOTTablaCampos(ofstream& archivoDot, TablaGruposHash &tabla);
     void archivoDOTTablaHashGlobal(ofstream& archivoDot, TablaGruposHash &tabla);
-    void graficarTablaHash(TablaGruposHash &tabla);
+    void graficarTablaHashGlobal(TablaGruposHash &tabla);
+    void archivoDOTCamposGrupo(ofstream& archivoDot, string nombre, TablaGruposHash &tabla);
+    void graficarGrupoHash(string nombre, TablaGruposHash &tabla);
 };
 #endif //GESTIONDECONTACTOS_ARCHIVODOT_H

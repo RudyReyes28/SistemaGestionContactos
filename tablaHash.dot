@@ -11,10 +11,10 @@ node [shape=plaintext, fontname=Arial];
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
         <TR><TD PORT="val1">GRUPOS</TD></TR>
         <TR><TD PORT="null0">     </TD></TR>
-        <TR><TD PORT="tablac1">0x2ba38185d40</TD></TR>
+        <TR><TD PORT="tablac1">0x1d4bacb5d40</TD></TR>
         <TR><TD PORT="null2">     </TD></TR>
-        <TR><TD PORT="tablac3">0x2ba38185dd0</TD></TR>
-        <TR><TD PORT="tablac4">0x2ba38185e18</TD></TR>
+        <TR><TD PORT="tablac3">0x1d4bacb5dd0</TD></TR>
+        <TR><TD PORT="tablac4">0x1d4bacb5e18</TD></TR>
     </TABLE>>];
 entrada:Proveedores -> valores:tablac1;
 entrada:Clientes -> valores:tablac3;
@@ -29,15 +29,33 @@ entrada:Trabajadores -> valores:tablac4;
     arbolProveedores [label=<
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
         <TR><TD PORT="arbol">Arboles</TD></TR>
-        <TR><TD PORT="arbol0">0x2ba38186238</TD></TR>
+        <TR><TD PORT="arbol0">0x1d4bacb6238</TD></TR>
         <TR><TD PORT="null1">     </TD></TR>
-        <TR><TD PORT="arbol2">0x2ba381862e8</TD></TR>
-        <TR><TD PORT="arbol3">0x2ba38186340</TD></TR>
+        <TR><TD PORT="arbol2">0x1d4bacb62e8</TD></TR>
+        <TR><TD PORT="arbol3">0x1d4bacb6340</TD></TR>
         <TR><TD PORT="null4">     </TD></TR>
     </TABLE>>];
 campoProveedores:telefonoP ->arbolProveedores:arbol0;
 campoProveedores:apellidoP ->arbolProveedores:arbol2;
 campoProveedores:nombreP ->arbolProveedores:arbol3;
+arbolProveedores:arbol0 ->30215455;
+30215455;
+30215455 -> 74125893;
+74125893;
+30215455 -> 55012366;
+55012366;
+arbolProveedores:arbol2 ->paPedro;
+paPedro;
+paPedro -> paJuana;
+paJuana;
+paPedro -> paJulian;
+paJulian;
+arbolProveedores:arbol3 ->pnPedro;
+pnPedro;
+pnPedro -> pnJuana;
+pnJuana;
+pnPedro -> pnJulian;
+pnJulian;
     campoClientes[label=<
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
         <TR><TD PORT="campos3">CAMPOS</TD></TR>
@@ -48,15 +66,45 @@ campoProveedores:nombreP ->arbolProveedores:arbol3;
     arbolClientes [label=<
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
         <TR><TD PORT="arbol">Arboles</TD></TR>
-        <TR><TD PORT="arbol0">0x2ba38185e98</TD></TR>
+        <TR><TD PORT="arbol0">0x1d4bacb5e98</TD></TR>
         <TR><TD PORT="null1">     </TD></TR>
-        <TR><TD PORT="arbol2">0x2ba38185f48</TD></TR>
+        <TR><TD PORT="arbol2">0x1d4bacb5f48</TD></TR>
         <TR><TD PORT="null3">     </TD></TR>
-        <TR><TD PORT="arbol4">0x2ba38185ff8</TD></TR>
+        <TR><TD PORT="arbol4">0x1d4bacb5ff8</TD></TR>
     </TABLE>>];
 campoClientes:nombreC ->arbolClientes:arbol0;
 campoClientes:telefonoC ->arbolClientes:arbol2;
 campoClientes:apellidoC ->arbolClientes:arbol4;
+arbolClientes:arbol0 ->Pedro;
+Pedro;
+Pedro -> Juana;
+Juana;
+Pedro -> Marta;
+Marta;
+Marta -> Julian;
+Julian;
+Marta -> Carlos;
+Carlos;
+arbolClientes:arbol2 ->78121456;
+78121456;
+78121456 -> 12378567;
+12378567;
+78121456 -> 78164321;
+78164321;
+78164321 -> 74821471;
+74821471;
+78164321 -> 71295304;
+71295304;
+arbolClientes:arbol4 ->acPedro;
+acPedro;
+acPedro -> acJuana;
+acJuana;
+acPedro -> acMarta;
+acMarta;
+acMarta -> acJulian;
+acJulian;
+acMarta -> acCarlos;
+acCarlos;
     campoTrabajadores[label=<
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
         <TR><TD PORT="campos4">CAMPOS</TD></TR>
@@ -68,14 +116,32 @@ campoClientes:apellidoC ->arbolClientes:arbol4;
     <TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
         <TR><TD PORT="arbol">Arboles</TD></TR>
         <TR><TD PORT="null0">     </TD></TR>
-        <TR><TD PORT="arbol1">0x2ba381860c0</TD></TR>
-        <TR><TD PORT="arbol2">0x2ba38186118</TD></TR>
+        <TR><TD PORT="arbol1">0x1d4bacb60c0</TD></TR>
+        <TR><TD PORT="arbol2">0x1d4bacb6118</TD></TR>
         <TR><TD PORT="null3">     </TD></TR>
-        <TR><TD PORT="arbol4">0x2ba381861c8</TD></TR>
+        <TR><TD PORT="arbol4">0x1d4bacb61c8</TD></TR>
     </TABLE>>];
 campoTrabajadores:apellidoT ->arbolTrabajadores:arbol1;
 campoTrabajadores:nombreT ->arbolTrabajadores:arbol2;
 campoTrabajadores:telefonoT ->arbolTrabajadores:arbol4;
+arbolTrabajadores:arbol1 ->taPedro;
+taPedro;
+taPedro -> taJuana;
+taJuana;
+taPedro -> taJulian;
+taJulian;
+arbolTrabajadores:arbol2 ->tnPedro;
+tnPedro;
+tnPedro -> tnJuana;
+tnJuana;
+tnPedro -> tnJulian;
+tnJulian;
+arbolTrabajadores:arbol4 ->96214782;
+96214782;
+96214782 -> 34789654;
+34789654;
+96214782 -> 32489135;
+32489135;
 valores:tablac1 -> campoProveedores:campos1;
 valores:tablac3 -> campoClientes:campos3;
 valores:tablac4 -> campoTrabajadores:campos4;

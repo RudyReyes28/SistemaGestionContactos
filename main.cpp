@@ -18,54 +18,59 @@ using namespace std;
     tabla.insertarGrupoPorNombre("Trabajadores");
     tabla.insertarGrupoPorNombre("Proveedores");
 
-    tabla.insertarCamposGrupo("Clientes","nombre","STRING");
-    tabla.insertarCamposGrupo("Clientes","apellido","STRING");
-    tabla.insertarCamposGrupo("Clientes","telefono","INTEGER");
+    tabla.insertarCamposGrupo("Clientes","nombreC","STRING");
+    tabla.insertarCamposGrupo("Clientes","apellidoC","STRING");
+    tabla.insertarCamposGrupo("Clientes","telefonoC","INTEGER");
 
+    tabla.insertarCamposGrupo("Trabajadores","nombreT","STRING");
+    tabla.insertarCamposGrupo("Trabajadores","apellidoT","STRING");
+    tabla.insertarCamposGrupo("Trabajadores","telefonoT","INTEGER");
 
-    tabla.insertarDatosCampos("Clientes","nombre","Juana");
-    tabla.insertarDatosCampos("Clientes","nombre","Pedro");
-    tabla.insertarDatosCampos("Clientes","nombre","Julian");
-    tabla.insertarDatosCampos("Clientes","nombre","Marta");
-    tabla.insertarDatosCampos("Clientes","nombre","Carlos");
+    tabla.insertarCamposGrupo("Proveedores","nombreP","STRING");
+    tabla.insertarCamposGrupo("Proveedores","apellidoP","STRING");
+    tabla.insertarCamposGrupo("Proveedores","telefonoP","INTEGER");
 
-    tabla.insertarDatosCampos("Clientes","telefono","12378567");
-    tabla.insertarDatosCampos("Clientes","telefono","78121456");
-    tabla.insertarDatosCampos("Clientes","telefono","74821471");
-    tabla.insertarDatosCampos("Clientes","telefono","78164321");
-    tabla.insertarDatosCampos("Clientes","telefono","71295304");
+    tabla.insertarDatosCampos("Clientes","nombreC","Juana");
+    tabla.insertarDatosCampos("Clientes","nombreC","Pedro");
+    tabla.insertarDatosCampos("Clientes","nombreC","Julian");
+    tabla.insertarDatosCampos("Clientes","nombreC","Marta");
+    tabla.insertarDatosCampos("Clientes","nombreC","Carlos");
 
-    tabla.buscarGrupo("Clientes").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
-    tabla.buscarGrupo("Clientes").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
+    tabla.insertarDatosCampos("Clientes","apellidoC","acJuana");
+    tabla.insertarDatosCampos("Clientes","apellidoC","acPedro");
+    tabla.insertarDatosCampos("Clientes","apellidoC","acJulian");
+    tabla.insertarDatosCampos("Clientes","apellidoC","acMarta");
+    tabla.insertarDatosCampos("Clientes","apellidoC","acCarlos");
 
-    cout<<endl;
-    tabla.imprimirDatosTabla();
+    tabla.insertarDatosCampos("Clientes","telefonoC","12378567");
+    tabla.insertarDatosCampos("Clientes","telefonoC","78121456");
+    tabla.insertarDatosCampos("Clientes","telefonoC","74821471");
+    tabla.insertarDatosCampos("Clientes","telefonoC","78164321");
+    tabla.insertarDatosCampos("Clientes","telefonoC","71295304");
 
+    tabla.insertarDatosCampos("Trabajadores","nombreT","tnJuana");
+    tabla.insertarDatosCampos("Trabajadores","nombreT","tnPedro");
+    tabla.insertarDatosCampos("Trabajadores","nombreT","tnJulian");
 
-    tabla.insertarGrupoPorNombre("Empresarios");
+    tabla.insertarDatosCampos("Trabajadores","apellidoT","taJuana");
+    tabla.insertarDatosCampos("Trabajadores","apellidoT","taPedro");
+    tabla.insertarDatosCampos("Trabajadores","apellidoT","taJulian");
 
-    tabla.insertarCamposGrupo("Proveedores","nombre","STRING");
-    tabla.insertarCamposGrupo("Proveedores","apellido","STRING");
-    tabla.insertarCamposGrupo("Proveedores","telefono","INTEGER");
+    tabla.insertarDatosCampos("Trabajadores","telefonoT","34789654");
+    tabla.insertarDatosCampos("Trabajadores","telefonoT","96214782");
+    tabla.insertarDatosCampos("Trabajadores","telefonoT","32489135");
 
+    tabla.insertarDatosCampos("Proveedores","nombreP","pnJuana");
+    tabla.insertarDatosCampos("Proveedores","nombreP","pnPedro");
+    tabla.insertarDatosCampos("Proveedores","nombreP","pnJulian");
 
-    tabla.insertarDatosCampos("Proveedores","nombre","Juana");
-    tabla.insertarDatosCampos("Proveedores","nombre","Pedro");
-    tabla.insertarDatosCampos("Proveedores","nombre","Julian");
-    tabla.insertarDatosCampos("Proveedores","nombre","Marta");
-    tabla.insertarDatosCampos("Proveedores","nombre","Carlos");
+    tabla.insertarDatosCampos("Proveedores","apellidoP","paJuana");
+    tabla.insertarDatosCampos("Proveedores","apellidoP","paPedro");
+    tabla.insertarDatosCampos("Proveedores","apellidoP","paJulian");
 
-    tabla.insertarDatosCampos("Proveedores","telefono","12378567");
-    tabla.insertarDatosCampos("Proveedores","telefono","78121456");
-    tabla.insertarDatosCampos("Proveedores","telefono","74821471");
-    tabla.insertarDatosCampos("Proveedores","telefono","78164321");
-    tabla.insertarDatosCampos("Proveedores","telefono","71295304");
-
-    cout<<"Imprimiendo proveedores"<<endl;
-    tabla.buscarGrupo("Proveedores").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
-    tabla.buscarGrupo("Proveedores").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
-    cout<<endl;
-    tabla.imprimirDatosTabla();
+    tabla.insertarDatosCampos("Proveedores","telefonoP","74125893");
+    tabla.insertarDatosCampos("Proveedores","telefonoP","30215455");
+    tabla.insertarDatosCampos("Proveedores","telefonoP","55012366");
   */
 
 
@@ -191,27 +196,29 @@ esto deberá mostrar el listado de grupos que contiene el sistema.
 
 }
 
-int main() {
-    TablaGruposHash tabla;
+void opcionGraficaGrupo(TablaGruposHash &tabla){
+    tabla.imprimirDatosTabla();
 
-    tabla.insertarGrupoPorNombre("Clientes");
-    tabla.insertarGrupoPorNombre("Trabajadores");
-    tabla.insertarGrupoPorNombre("Proveedores");
+    string nombreG = "";
+    cout<<"Escriba el nombre del grupo:"<<endl;
+    getline(cin, nombreG);
 
-    tabla.insertarCamposGrupo("Clientes","nombreC","STRING");
-    tabla.insertarCamposGrupo("Clientes","apellidoC","STRING");
-    tabla.insertarCamposGrupo("Clientes","telefonoC","INTEGER");
-
-    tabla.insertarCamposGrupo("Trabajadores","nombreT","STRING");
-    tabla.insertarCamposGrupo("Trabajadores","apellidoT","STRING");
-    tabla.insertarCamposGrupo("Trabajadores","telefonoT","INTEGER");
-
-    tabla.insertarCamposGrupo("Proveedores","nombreP","STRING");
-    tabla.insertarCamposGrupo("Proveedores","apellidoP","STRING");
-    tabla.insertarCamposGrupo("Proveedores","telefonoP","INTEGER");
     ArchivoDOT dot;
-    dot.graficarTablaHash(tabla);
-    /*
+    dot.graficarGrupoHash(nombreG,tabla);
+}
+
+void opcionGraficarArbolesGrupo(TablaGruposHash &tabla){
+    tabla.imprimirDatosTabla();
+
+    string nombreG = "";
+    cout<<"Escriba el nombre del grupo:"<<endl;
+    getline(cin, nombreG);
+
+    ArchivoDOT dot;
+    dot.graficarArbolesGrupo(nombreG,tabla);
+};
+int main() {
+
     TablaGruposHash tabla;
 
 
@@ -227,13 +234,13 @@ int main() {
         cout<<"-->Menu de reportes"<<endl;
         cout<<"      4. Ver reportes"<<endl;
         cout<<"-->Graficas de las Estructuras"<<endl;
-        cout<<"      4. Estado actual de toda la estructura completa"<<endl;
-        cout<<"      5. Estado actual de cada una de las estructuras por separado"<<endl;
-        cout<<"      6. Estado actual de los datos de un grupo"<<endl;
+        cout<<"      5. Estado actual de toda la estructura completa"<<endl;
+        cout<<"      6. Estado actual de cada una de las estructuras por separado"<<endl;
+        cout<<"      7. Estado actual de los datos de un grupo"<<endl;
         cout<<"-->Exportacion de contactos"<<endl;
-        cout<<"      7. Exportar Contactos"<<endl;
+        cout<<"      8. Exportar Contactos"<<endl;
         cout<<"-->Cerrar Programa"<<endl;
-        cout<<"      8. Salir"<<endl;
+        cout<<"      9. Salir"<<endl;
         cout<<endl;
         cout<<"Seleccione una opcion: ";
         cin>>opcion;
@@ -258,22 +265,30 @@ int main() {
                 opcionBusquedaDeContactos(tabla);
                 break;
             case 4:
+
                 break;
             case 5:
+                ArchivoDOT dot;
+                dot.graficarTablaHashGlobal(tabla);
                 break;
             case 6:
+                opcionGraficaGrupo(tabla);
                 break;
             case 7:
+                opcionGraficarArbolesGrupo(tabla);
+                break;
+            case 8:
                 opcionExportarContactos(tabla);
                 break;
 
+
         }
 
-    }while(opcion != 8);
+    }while(opcion != 9);
     //tabla.imprimirDatosTabla();
     //tabla.buscarGrupo("Clientes").campos->buscarGrupo("nombre").arbol.imprimirInOrden();
     //tabla.buscarGrupo("Clientes").campos->buscarGrupo("telefono").arbol.imprimirInOrden();
-*/
+
      return 0;
 
 }
