@@ -5,6 +5,7 @@
 #include "generarArchivos/ArchivoDOT.h"
 #include "lineaDeComandos/LineaComandos.h"
 #include "exportacionContactos/ExportarContacto.h"
+#include "exportacionContactos/ArchivoLog.h"
 #include <fstream>
 #include <vector>
 #include <sstream>
@@ -95,6 +96,8 @@ void opcionCreacionDeGrupos(TablaGruposHash &tabla){
             tabla.insertarCamposGrupo(nombreG,campos[i].first, campos[i].second);
         }
 
+        nuevaEntradaLog("NUEVO GRUPO",comando);
+
         /*cout<<endl;
         tabla.imprimirDatosTabla();
         cout<<endl;
@@ -120,6 +123,8 @@ void opcionInsercionDeContactos(TablaGruposHash &tabla){
             cout<<nombreCampo<< " : "<<contactos[i]<<endl;
             tabla.insertarDatosCampos(nombreG,nombreCampo,contactos[i]);
         }
+
+        nuevaEntradaLog("INSERCION",comando);
 
     }
 }
@@ -148,6 +153,8 @@ void opcionBusquedaDeContactos(TablaGruposHash &tabla){
 
         }
         cout<<datosContacto<<endl;
+
+        nuevaEntradaLog("BUSQUEDA",comando);
 
     }
 }
@@ -193,6 +200,8 @@ esto deberá mostrar el listado de grupos que contiene el sistema.
 
     }
 
+    nuevaEntradaLog("EXPORTACION","se exporta los contactos del grupo "+nombreG);
+
 
 }
 
@@ -205,6 +214,8 @@ void opcionGraficaGrupo(TablaGruposHash &tabla){
 
     ArchivoDOT dot;
     dot.graficarGrupoHash(nombreG,tabla);
+
+    nuevaEntradaLog("GRAFICA","Se grafica las tablas del grupo "+nombreG);
 }
 
 void opcionGraficarArbolesGrupo(TablaGruposHash &tabla){
@@ -216,10 +227,36 @@ void opcionGraficarArbolesGrupo(TablaGruposHash &tabla){
 
     ArchivoDOT dot;
     dot.graficarArbolesGrupo(nombreG,tabla);
+
+    nuevaEntradaLog("GRAFICA","se grafican los arboles del grupo "+nombreG);
 };
+
+void opcionVerReportes(TablaGruposHash &tabla){
+    cout<<"---REPORTES---"<<endl;
+    int cantidadTotalDatos=0;
+    int tamanoActual = tabla.obtenerTamanoActual();
+    GrupoHash * grupos = tabla.obtenerTabla();
+    for (int i = 0; i < tamanoActual; ++i) {
+        if (!grupos[i].nombreGrupo.empty()) {
+            cout<<"Grupo: "+grupos[i].nombreGrupo<<endl;
+            int cantidadDeContactos = tabla.buscarGrupo(grupos[i].nombreGrupo).campos->obtenerCantidadDatosArbol()-1;
+            int cantCampos = grupos[i].campos->obtenerCantidadDatos();
+            int cantidadDatos = cantidadDeContactos*cantCampos;
+            cout<<"    Cantidad de contactos: "<<cantidadDeContactos<<endl;
+            cout<<"    Cantidad de datos: "<<cantidadDatos<<endl;
+
+            cantidadTotalDatos+=cantidadDatos;
+
+        }
+    }
+
+    cout<<"Cantidad de datos de todo el sistema: "<<cantidadTotalDatos<<endl;
+}
 int main() {
 
+
     TablaGruposHash tabla;
+     crearArchivoLog();
 
 
     int opcion = 0;
@@ -265,11 +302,12 @@ int main() {
                 opcionBusquedaDeContactos(tabla);
                 break;
             case 4:
-
+                opcionVerReportes(tabla);
                 break;
             case 5:
                 ArchivoDOT dot;
                 dot.graficarTablaHashGlobal(tabla);
+                nuevaEntradaLog("GRAFICA","se grafica toda la estructura");
                 break;
             case 6:
                 opcionGraficaGrupo(tabla);

@@ -21,4 +21,6 @@ add_executable(GestionDeContactos main.cpp
         lineaDeComandos/LineaComandos.cpp
         lineaDeComandos/LineaComandos.h
         exportacionContactos/ExportarContacto.cpp
-        exportacionContactos/ExportarContacto.h)
+        exportacionContactos/ExportarContacto.h
+        exportacionContactos/ArchivoLog.cpp
+        exportacionContactos/ArchivoLog.h)
