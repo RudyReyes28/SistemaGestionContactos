@@ -287,6 +287,8 @@ int main() {
             case 1:
                 //METODO PARA OBTENER LOS DATOS
                 //ADD NEW-GROUP Clientes FIELDS (nombre STRING, apellido STRING, telefono INTEGER);
+                //ADD NEW-GROUP Proveedores FIELDS (nombre STRING, apellido STRING, apodo STRING, telefono INTEGER);
+                //ADD NEW-GROUP Trabajadores FIELDS (nombre STRING, apellido STRING);
                 opcionCreacionDeGrupos(tabla);
                 break;
             case 2:
@@ -295,6 +297,17 @@ int main() {
                 //ADD CONTACT IN Clientes FIELDS (Maria, Garcia, 65432198);
                 //ADD CONTACT IN Clientes FIELDS (Luis, Gonzalez, 12348765);
                 //ADD CONTACT IN Clientes FIELDS (Ana, Martinez, 78901234);
+
+                //ADD CONTACT IN Proveedores FIELDS (PrPedro, PrAlvarez, apPedro, 78941234);
+                //ADD CONTACT IN Proveedores FIELDS (PrJuan, PrPerez, apJaun, 12354587);
+                //ADD CONTACT IN Proveedores FIELDS (PrMaria, PrGarcia, apMaria, 78314532);
+                //ADD CONTACT IN Proveedores FIELDS (PrLuis, PrGonzalez, apLuis, 48678913);
+
+                //ADD CONTACT IN Trabajadores FIELDS (TrPedro, TrAlvarez);
+                //ADD CONTACT IN Trabajadores FIELDS (TrJuan, TrPerez);
+                //ADD CONTACT IN Trabajadores FIELDS (TrMaria, TrGarcia);
+                //ADD CONTACT IN Trabajadores FIELDS (TrLuis, TrGonzalez);
+                //ADD CONTACT IN Trabajadores FIELDS (TrAna, TrMartinez);
                 opcionInsercionDeContactos(tabla);
                 break;
             case 3:
